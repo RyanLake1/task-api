@@ -7,7 +7,7 @@ export async function getTasks(req, res, next) {
   } = req.query;
 
   const options = {
-    completed: completed.toLowerCase() === "true" ? true : false,
+    completed: completed === null ? true : completed.toLowerCase() === "true" ? true : false,
   };
   const tasks = await taskService.getAllTasks(options);
 

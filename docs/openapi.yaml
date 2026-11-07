@@ -15,9 +15,12 @@ tags:
 paths:
   /tasks:
     get:
-      summary: List all tasks
       tags:
         - Tasks
+      summary: List all tasks
+      description: Retrieve a list of all tasks
+      parameters:
+        - $ref: '#/components/parameters/CompletedParam'
       responses:
         '200':
           description: OK
@@ -92,3 +95,12 @@ components:
         completed:
           type: boolean
           example: false
+  parameters:
+    CompletedParam:
+      name: completed
+      in: query
+      required: false
+      description: Filter by task completion
+      schema:
+        type: boolean
+        example: false
